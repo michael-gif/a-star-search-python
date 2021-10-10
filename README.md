@@ -1,4 +1,4 @@
-# a-star-search-python
+# A* search in Python
 Implementation of A* search algorithm in Python
 
 # Usage
