@@ -1,5 +1,6 @@
 import math
 
+
 # to make this algorithm work in 3d space, a z component is introduced into each node. this is the only major change
 
 
@@ -21,6 +22,12 @@ def compare_tuple(t1, t2):
         return False
 
 
+'''
+0 = traversable node
+1 = start node
+2 = end node
+3 = non-traversable node (a wall)
+'''
 maze = [[0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 2, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
