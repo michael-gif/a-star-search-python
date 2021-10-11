@@ -31,23 +31,23 @@ def compare_tuple(t1, t2):
 maze = [[0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 2, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
-        [3, 3, 3, 3, 3, 0, 0, 0],
+        [3, 3, 0, 3, 3, 0, 0, 0],
         [3, 0, 0, 0, 3, 0, 0, 0],
         [3, 0, 0, 0, 3, 0, 0, 0],
         [3, 1, 0, 0, 3, 0, 0, 0],
         [3, 3, 3, 3, 3, 0, 0, 0]]
 
-start = (0, 0)
-end = (0, 0)
+start = (0, 0, 0)
+end = (0, 0, 0)
 walls = []
 for y in range(len(maze)):
     for x in range(len(maze[y])):
         if maze[y][x] == 1:
-            start = (x, y)
+            start = (x, y, 0)
         elif maze[y][x] == 2:
-            end = (x, y)
+            end = (x, y, 0)
         elif maze[y][x] == 3:
-            walls.append((x, y))
+            walls.append((x, y, 0))
 
 
 def search(start, end):
@@ -61,10 +61,10 @@ def search(start, end):
         lowest_node = open_list.pop(0)
         # generate child nodes
         children = [
-            Node((lowest_node.x - 1, lowest_node.y)),
-            Node((lowest_node.x + 1, lowest_node.y)),
-            Node((lowest_node.x, lowest_node.y + 1)),
-            Node((lowest_node.x, lowest_node.y - 1))
+            Node((lowest_node.x - 1, lowest_node.y, 0)),
+            Node((lowest_node.x + 1, lowest_node.y, 0)),
+            Node((lowest_node.x, lowest_node.y + 1, 0)),
+            Node((lowest_node.x, lowest_node.y - 1, 0))
         ]
         # get rid of un-traversable nodes
         i = 0
