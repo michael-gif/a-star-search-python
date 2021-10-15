@@ -31,7 +31,7 @@ def compare_tuple(t1, t2):
 maze = [[0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 2, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
-        [3, 3, 0, 3, 3, 0, 0, 0],
+        [3, 3, 3, 0, 3, 0, 0, 0],
         [3, 0, 0, 0, 3, 0, 0, 0],
         [3, 0, 0, 0, 3, 0, 0, 0],
         [3, 1, 0, 0, 3, 0, 0, 0],
@@ -43,7 +43,7 @@ walls = []
 for y in range(len(maze)):
     for x in range(len(maze[y])):
         if maze[y][x] == 1:
-            start = (x, y, 0)
+            start = (x, y, 5)
         elif maze[y][x] == 2:
             end = (x, y, 0)
         elif maze[y][x] == 3:
@@ -64,7 +64,7 @@ def search(start, end):
             Node((lowest_node.x - 1, lowest_node.y, 0)),
             Node((lowest_node.x + 1, lowest_node.y, 0)),
             Node((lowest_node.x, lowest_node.y + 1, 0)),
-            Node((lowest_node.x, lowest_node.y - 1, 0))
+            Node((lowest_node.x, lowest_node.y - 1, 0)),
         ]
         # get rid of un-traversable nodes
         i = 0
@@ -96,8 +96,8 @@ def search(start, end):
                     skip_child = True
             if not skip_child:
                 open_list.append(child)
-            closed_list.append(lowest_node)
             i += 1
+        closed_list.append(lowest_node)
 
     # find end node in closed_list
     path = []
